@@ -89,3 +89,7 @@ az containerapp delete \
                 --resource-group $RESOURCE_GROUP  
 ```
 
+### Delete the resource group with all resources
+```zsh
+az group delete --name $RESOURCE_GROUP
+```
