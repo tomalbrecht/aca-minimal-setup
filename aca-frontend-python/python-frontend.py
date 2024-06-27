@@ -11,7 +11,7 @@ load_dotenv()  # Load environment variables from .env file
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="public"), name="static")
+app.mount("/static", StaticFiles(directory="aca-albumapi-python/src/app/public"), name="static")
 
 API_BASE_URL = os.getenv("API_BASE_URL")
 API_BASE_URL = "http://127.0.0.1:8000"
@@ -46,4 +46,4 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8090)

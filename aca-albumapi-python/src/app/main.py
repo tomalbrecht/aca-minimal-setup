@@ -3,7 +3,7 @@
 
 from typing import Optional
 
-from app.test_api import FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -18,7 +18,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.mount("/static", StaticFiles(directory="app/public"), name="static")
+app.mount("/static", StaticFiles(directory="aca-albumapi-python/src/app/public"), name="static")
+# http://localhost:8080/static/images/robbie.png
 
 class Album():
     def __init__(self, id, title, artist, price, image_url):
@@ -53,3 +54,7 @@ def read_root():
 @app.get("/albums")
 def get_albums():
     return albums
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)

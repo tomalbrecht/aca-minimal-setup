@@ -10,12 +10,12 @@
 
 ### Set configurations
 ```zsh
-RESOURCE_GROUP="rg-aca-album-dev"
+RESOURCE_GROUP="rg-aca-album-dev-python"
 LOCATION="westeurope"
 ACA_ENVIRONMENT="aca-env-album"
 ACA_BACKEND_API="album-api"
 ACA_FRONTEND_UI="album-ui"
-ACR_NAME="acracaalbums0137"
+ACR_NAME="acracaalbums0138"
 ```
 
 ### Create resource group
@@ -63,7 +63,7 @@ az containerapp create \
 
 ### Build frontend image
 ```zsh
-az acr build --registry $ACR_NAME --image $ACA_FRONTEND_UI ./aca-frontend-js/
+az acr build --registry $ACR_NAME --image $ACA_FRONTEND_UI ./aca-frontend-python/
 ```
 
 ### Show API endpoint
@@ -89,6 +89,7 @@ az containerapp create \
 ```
 
 ## // THE END
+
 
 ## Misc
 
