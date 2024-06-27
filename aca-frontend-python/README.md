@@ -85,7 +85,8 @@ az containerapp create \
   --ingress 'external' \
   --registry-server $ACR_NAME'.azurecr.io' \
   --query properties.configuration.ingress.fqdn
-# "album-ui.purplepond-4fe75b66.westeurope.azurecontainerapps.io"
+  
+# album-ui.purplepond-4fe75b66.westeurope.azurecontainerapps.io
 ```
 
 ## // THE END
