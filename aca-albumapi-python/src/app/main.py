@@ -6,6 +6,7 @@ from typing import Optional
 from app.test_api import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
@@ -16,6 +17,8 @@ app.add_middleware(
     allow_methods="GET",
     allow_headers=["*"]
 )
+
+app.mount("/static", StaticFiles(directory="app/public"), name="static")
 
 class Album():
     def __init__(self, id, title, artist, price, image_url):
@@ -32,20 +35,19 @@ albums = [
     Album(4, "Lost in Translation", "MegaDNS", 12.99,"https://aka.ms/albums-envoylogo"),
     Album(5, "Lock Down Your Love", "V is for VNET", 12.99, "https://aka.ms/albums-vnetlogo"),
     Album(6, "Sweet Container O' Mine", "Guns N Probeses", 14.99, "https://aka.ms/albums-containerappslogo"),
-    Album(7, "Digital Revolution", "The Bival", 19.99, "/api/media-file/robbie.png")
+    Album(7, "Digital Revolution", "The Bival", 19.99, "/static/images/robbie.png")
 ]
-
 
 @app.get("/")
 def read_root():
     return {"Access /albums to see the list of albums"}
 
 
-@app.get(
-    path="/api/media-file"
-)
-async def post_media_file():
-    return FileResponse("app/robbie.png", media_type="image/png")
+# @app.get(
+#     path="/api/media-file"
+# )
+# async def post_media_file():
+#     return FileResponse("app/robbie.png", media_type="image/png")
 
 
 @app.get("/albums")

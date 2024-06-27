@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/semantic-ui/2.4.1/semantic.rtl.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="icon" href="/images/favicon.svg">
+    <title>Albums</title>
+</head>
+<body style="background-color: {{ background_color }};">
+    <div class="ui container">
+        <h2 class="ui center aligned icon block header">
+            <i class="music icon" style="padding: 20px; color: {{ background_color }};"></i>
+            <h1 style="font-size: .4em; font-family: Lato;">Azure Container Apps Greatest Hits</h1>
+        </h2>
+        <div class="four ui buttons">
+            <button class="ui button" onclick="parent.open('https://aka.ms/aca-docs')">Docs</button>
+            <button class="ui button" onclick="parent.open('http://aka.ms/aca-roadmap')">Public Roadmap</button>
+            <button class="ui button" onclick="parent.open('https://aka.ms/containerapps-discord')">Discord</button>
+            <button class="ui button" onclick="parent.open('https://aka.ms/aca-mailinglist')">Mailing List</button>
+        </div>
+
+        <div class="ui attached segment">
+            <div class="ui divided items">
+                {% for album in albums %}
+                    <div class="item">
+                        <div class="ui image small">
+                            <img src="{{ album.image_url }}" alt="Album cover">
+                        </div>
+                        <div class="content">
+                            <div class="header">
+                                <span class="album-title">{{ album.title }}</span>
+                            </div>
+                            <div class="meta">
+                                <span class="meta-info">{{ album.artist }}</span>
+                                <span class="meta-info">{{ album.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
