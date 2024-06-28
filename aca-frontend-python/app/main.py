@@ -11,14 +11,14 @@ load_dotenv()  # Load environment variables from .env file
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="aca-albumapi-python/src/app/public"), name="static")
+app.mount("/static", StaticFiles(directory="aca-frontend-python/public"), name="static")
 
 API_BASE_URL = os.getenv("API_BASE_URL")
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = "http://127.0.0.1:8080"
 TIMEOUT = int(os.getenv("TIMEOUT", 15000))
 BACKGROUND_COLOR = os.getenv("BACKGROUND_COLOR")
 
-templates = Jinja2Templates(directory="views")
+templates = Jinja2Templates(directory="aca-frontend-python/views")
 
 client = httpx.AsyncClient(base_url=API_BASE_URL, timeout=TIMEOUT / 1000.0)
 
@@ -47,3 +47,4 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8090)
+    #fastapi dev aca-frontend-python/app/main.py
